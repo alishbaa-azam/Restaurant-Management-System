@@ -1,44 +1,51 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const bookingSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
+      trim: true,
+      maxlength: 100
+      
     },
     email: {
       type: String,
       required: true,
-      match: [/\S+@\S+\.\S+/, "Invalid email"],
+      lowercase: true,
+      trim: true,
+      match: [/^\S+@\S+\.\S+$/, 'Invalid email']
     },
-    contact: {
-    type: String,
-    required: [true, "Contact number is required"],
-    match: [/^(03\d{9})$/, "Invalid contact number"]
-  },
-    persons: {
-      type: Number,
+    phone: {
+      type: String,
       required: true,
-      min: 1,
+      trim: true
     },
     date: {
       type: String,
-      required: true,
+      required: true
     },
     time: {
       type: String,
-      required: true,
+      required: true
     },
-    specialRequest: {
-      type: String,
-      required: true,
-    },
-    tableNumber: {
+    guests: {
       type: Number,
       required: true,
+      min: 1,
+      max: 20
     },
+    tableType: {
+      type: String,
+      enum: ['indoor', 'outdoor', 'private', 'chef'],
+      default: 'indoor'
+    },
+    specialRequests: {
+      type: String,
+      trim: true
+    }
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Booking", bookingSchema);
+export default mongoose.model('Booking', bookingSchema);

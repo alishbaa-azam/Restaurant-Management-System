@@ -1,85 +1,144 @@
-import Booking from "../models/booking.model.js";
+// import Booking from '../models/booking.model.js';
+// // CREATE booking
+// export const createBooking = async (req, res) => {
+//   try {
+//     const booking = await Booking.create(req.body);
 
-const TOTAL_TABLES = 10;
+//     res.status(201).json({
+//       success: true,
+//       message: 'Booking created successfully and confirmation email sent',
+//       booking
+//     });
+   
+//   } catch (error) {
+//     res.status(400).json({
+//       success: false,
+//       message: error.message
+//     });
+//   }
+// };
 
+import Booking from '../models/booking.model.js';
+import { sendBookingConfirmationEmail } from '../utils/emailService.js';  // adjust path as needed
 
 export const createBooking = async (req, res) => {
   try {
-    const { name, email, contact, persons, date, time, specialRequest } = req.body;
+    const booking = await Booking.create(req.body);
 
-    if (!name || !email || !contact ||!persons || !date || !time || !specialRequest) {
-      return res.status(400).json({ message: "All fields are required" });
-    }
+    // Send confirmation email asynchronously
+    sendBookingConfirmationEmail(booking)
+      .then(info => {
+        console.log('Email sent:', info.response);
+      })
+      .catch(error => {
+        console.error('Error sending email:', error);
+      });
 
-    const existing = await Booking.find({ date, time });
-    
-    if (existing.length >= TOTAL_TABLES) {
-      return res.status(400).json({ message: "No table available" });
-    }
-
-    const bookedNumbers = existing.map(b => b.tableNumber);
-    let tableNo = null;
-
-    for (let i = 1; i <= TOTAL_TABLES; i++) {
-      if (!bookedNumbers.includes(i)) {
-        tableNo = i;
-        break;
-      }
-    }
-
-    const booking = await Booking.create({
-      name, email,contact, persons, date, time, specialRequest, tableNumber: tableNo
+    res.status(201).json({
+      success: true,
+      message: 'Booking created successfully and confirmation email sent',
+      booking,
     });
 
-    res.status(201).json({ message: "Table booked", booking });
-
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
   }
 };
 
-export const getBookings = async (req, res) => {
+// READ all bookings
+export const getAllBookings = async (req, res) => {
   try {
-    const bookings = await Booking.find().sort({ date: 1 });
-    res.json(bookings);
+    const bookings = await Booking.find().sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: bookings.length,
+      bookings
+    });
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
   }
 };
 
-// READ SINGLE
+// READ single booking
 export const getBookingById = async (req, res) => {
   try {
     const booking = await Booking.findById(req.params.id);
-    res.json(booking);
+
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: 'Booking not found'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      booking
+    });
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(400).json({
+      success: false,
+      message: 'Invalid booking ID'
+    });
   }
 };
 
-// UPDATE BOOKING
+// UPDATE booking
 export const updateBooking = async (req, res) => {
   try {
-    const updated = await Booking.findByIdAndUpdate(
+    const booking = await Booking.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }
+      { new: true, runValidators: true }
     );
 
-    res.json({ message: "Updated", booking: updated });
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: 'Booking not found'
+      });
+    }
 
+    res.status(200).json({
+      success: true,
+      message: 'Booking updated successfully',
+      booking
+    });
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(400).json({
+      success: false,
+      message: error.message
+    });
   }
 };
 
-// DELETE BOOKING
+// DELETE booking
 export const deleteBooking = async (req, res) => {
   try {
-    await Booking.findByIdAndDelete(req.params.id);
-    res.json({ message: "Booking deleted" });
+    const booking = await Booking.findByIdAndDelete(req.params.id);
 
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: 'Booking not found'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'Booking deleted successfully'
+    });
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(400).json({
+      success: false,
+      message: 'Invalid booking ID'
+    });
   }
 };

@@ -4,85 +4,110 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#231612] text-gray-300 py-24 px-8">
-<div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+    <footer className="bg-[#2a1a12] text-gray-200 py-16 px-6 sm:px-12 lg:px-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
 
-        {/* LEFT SECTION */}
-        <div>
-          <h2 className="text-5xl font-bold text-[#ffb74a] font-serif">
+        {/* Brand & Description */}
+        <div className="space-y-6">
+          <h1 className="text-4xl font-extrabold text-[#fbbf24] tracking-wide font-serif">
             Foodies
-          </h2>
-
-          <p className="mt-4 text-base text-gray-300 leading-relaxed">
-            When culinary artistry meets doorstep convenience.<br />
-            Savor handcrafted perfection, delivered with care.
+          </h1>
+          <p className="text-gray-300 leading-relaxed text-base sm:text-lg">
+            Experience the fusion of gourmet flavors with unmatched doorstep convenience.
+            Handcrafted meals delivered fresh to your home.
           </p>
 
-          {/* Email Offers */}
-          <div className="mt-8">
-            <p className="flex items-center gap-2 text-[#ffb74a] font-semibold">
-              <span className="text-lg">📧</span> Get Exclusive Offers
-            </p>
-
-            <div className="mt-4 border border-[#c68f3d] rounded-lg p-1 flex items-center bg-transparent">
-              <input
-                type="email"
-                placeholder="Enter your email..."
-                className="w-full bg-transparent px-4 py-2 text-gray-300 outline-none placeholder-gray-400"
-              />
-              <button className="px-6 py-2 rounded-lg bg-gradient-to-r from-[#ff8f1f] to-[#ff5200] text-white font-semibold shadow-[0_0_10px_rgba(255,150,50,0.5)] hover:opacity-90">
-                Join Now →
-              </button>
-            </div>
-          </div>
+          <form className="flex max-w-md " onSubmit={e => e.preventDefault()}>
+            <input
+              type="email"
+              placeholder="Your email address"
+              aria-label="Email address for newsletter"
+              required
+              className="flex-grow px-4 py-2 rounded-l-md bg-transparent border border-[#fbbf24] placeholder-gray-300 text-gray-200 focus:outline-none focus:ring-1 focus:ring-yellow-300"
+            />
+            <button
+              type="submit"
+              className="bg-gradient-to-r from-[#f59e0b] to-[#d97706] px-5 py-2 rounded-r-md font-semibold tracking-wide hover:brightness-110 transition  "
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
 
-        {/* MIDDLE SECTION */}
-        <div className="text-left">
-          <h3 className="text-xl font-semibold text-[#ffb74a] border-l-4 pl-3 border-[#ffb74a]">
-            Navigation
-          </h3>
-
-          <ul className="mt-6 space-y-3 text-gray-300 text-lg">
-            <li className="hover:text-[#ffb74a] transition cursor-pointer">› Home</li>
-            <li className="hover:text-[#ffb74a] transition cursor-pointer">› Menu</li>
-            <li className="hover:text-[#ffb74a] transition cursor-pointer">› About Us</li>
-            <li className="hover:text-[#ffb74a] transition cursor-pointer">› Contact</li>
+        {/* Navigation Links */}
+        <nav aria-label="Footer navigation" className="flex flex-col space-y-4">
+          <h2 className="text-2xl font-semibold text-[#fbbf24] border-l-4 border-yellow-300 pl-4">
+            Explore
+          </h2>
+          <ul className="space-y-3 text-gray-300 text-lg">
+            {["Home", "Menu", "About Us", "Contact"].map((item) => (
+              <li
+                key={item}
+                className="cursor-pointer hover:text-yellow-300 transition"
+                tabIndex={0}
+                role="link"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    // Add navigation logic here if needed
+                  }
+                }}
+              >
+                {item}
+              </li>
+            ))}
           </ul>
-        </div>
+        </nav>
 
-        {/* RIGHT SECTION */}
+        {/* Social Media & Contact */}
         <div>
-          <h3 className="text-xl font-semibold text-[#ffb74a] border-l-4 pl-3 border-[#ffb74a]">
-            Social Connect
-          </h3>
-
-          <div className="mt-6 flex gap-5">
-            {/* Each icon circle */}
-            <div className="bg-[#4c3b2d] p-4 rounded-full hover:scale-105 transition cursor-pointer">
-              <FaFacebookF className="text-[#3b5998] text-xl" />
-            </div>
-            <div className="bg-[#4c3b2d] p-4 rounded-full hover:scale-105 transition cursor-pointer">
-              <FaInstagram className="text-pink-500 text-xl" />
-            </div>
-            <div className="bg-[#4c3b2d] p-4 rounded-full hover:scale-105 transition cursor-pointer">
-              <FaXTwitter className="text-white text-xl" />
-            </div>
-            <div className="bg-[#4c3b2d] p-4 rounded-full hover:scale-105 transition cursor-pointer">
-              <FaYoutube className="text-red-500 text-xl" />
-            </div>
+          <h2 className="text-2xl font-semibold text-[#fbbf24] border-l-4 border-yellow-300 pl-4">
+            Connect With Us
+          </h2>
+          <p className="mt-4 text-gray-300 mb-6">
+            Follow us on social media for the latest updates and offers.
+          </p>
+          <div className="flex space-x-3">
+            {[
+              {
+                icon: <FaFacebookF className="text-[#1877F2]" />,
+                label: "Facebook",
+                href: "https://facebook.com",
+              },
+              {
+                icon: <FaInstagram className="text-pink-500" />,
+                label: "Instagram",
+                href: "https://instagram.com",
+              },
+              {
+                icon: <FaXTwitter className="text-white" />,
+                label: "Twitter",
+                href: "https://twitter.com",
+              },
+              {
+                icon: <FaYoutube className="text-red-600" />,
+                label: "YouTube",
+                href: "https://youtube.com",
+              },
+            ].map(({ icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="bg-[#3a2a18] p-4 rounded-full flex items-center justify-center hover:bg-yellow-300 hover:text-[#2b1f13] transition"
+              >
+                {icon}
+              </a>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* BOTTOM COPYRIGHT */}
-      <div className="mt-16 pt-6 border-t border-[#a56a32] text-center">
-        <p className="text-[#ffb74a] text-sm">
-          © 2025 Foodies. All rights reserved.
-        </p>
-        <p className="text-[#ffb74a] text-sm mt-2">
-          Designed by Maryam
-        </p>
+      {/* Bottom Bar */}
+      <div className="mt-16 pt-8 border-t border-yellow-500 text-center text-sm text-yellow-300 select-none">
+        <p>© 2025 Foodies. All rights reserved.</p>
+        <p className="mt-1">Designed by Team MAD</p>
       </div>
     </footer>
   );

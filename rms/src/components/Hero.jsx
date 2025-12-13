@@ -1,31 +1,3 @@
-// import React from 'react'
-
-
-// export default function Hero(){
-// return (
-// <section className="relative bg-gradient-to-br from-[#b34700] to-[#7a2d00] text-white py-16 px-8">
-// <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-// <div>
-// <h1 className="text-4xl font-bold">We're Here <span className="block text-yellow-300">For Food & Delivery</span></h1>
-// <p className="mt-4 text-gray-100/80">Best cooks and best delivery guys all at your service. Hot tasty food will reach you in 60 minutes.</p>
-// <div className="mt-6 flex gap-3">
-// <input placeholder="Discover your next favorite meal..." className="px-4 py-2 rounded-md text-black flex-1" />
-// <button className="bg-yellow-400 px-4 py-2 rounded-md font-semibold">Search</button>
-// </div>
-// <div className="mt-4 flex gap-3">
-// <button className="bg-[#fdba74] px-4 py-2 rounded-md">Download App</button>
-// <button className="bg-[#ffd680] px-4 py-2 rounded-md">Watch Video</button>
-// </div>
-// </div>
-// <div className="flex justify-center md:justify-end">
-// <div className="w-64 h-64 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
-// <img src="/hero_girl.jpg" alt="hero" className="w-full h-full object-cover" />
-// </div>
-// </div>
-// </div>
-// </section>
-// )
-// }
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaSearch, FaDownload, FaPlay } from 'react-icons/fa'
