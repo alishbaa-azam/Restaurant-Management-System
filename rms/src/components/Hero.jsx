@@ -21,7 +21,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative bg-gradient-to-br from-amber-900 via-amber-800 to-amber-700 text-white py-32 px-6 overflow-hidden">
+    <section className="relative bg-linear-to-br from-amber-900 via-amber-800 to-amber-700 text-white py-32 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
         
         {/* Left Content */}
@@ -38,7 +38,7 @@ export default function Hero() {
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
           >
             We're Here <br />
-            <span className="text-amber-400 bg-gradient-to-r from-amber-400 to-amber-300 bg-clip-text">
+            <span className="text-amber-400 bg-linear-to-r from-amber-400 to-amber-300 bg-clip-text">
               For Food & Delivery
             </span>
           </motion.h1>
@@ -69,7 +69,7 @@ export default function Hero() {
               />
               <button
                 type="submit"
-                className="mr-4 px-6 py-3 bg-gradient-to-r from-amber-400 to-amber-300 rounded-lg font-semibold text-amber-900 hover:from-amber-300 hover:to-amber-200 transition-all duration-300 shadow-lg hover:shadow-amber-300/20"
+                className="mr-4 px-6 py-3 bg-linear-to-r from-amber-400 to-amber-300 rounded-lg font-semibold text-amber-900 hover:from-amber-300 hover:to-amber-200 transition-all duration-300 shadow-lg hover:shadow-amber-300/20"
               >
                 Search
               </button>
@@ -113,7 +113,7 @@ export default function Hero() {
     key={index}
     src={imgSrc}
     alt={`Orbiting ${index + 1}`}
-    className={`absolute w-[120px] xs:w-[140px] sm:w-[150px] md:w-[160px] rounded-full orbit-delay-${(index + 1) * 5} shadow-lg border-4 border-white/30`}
+    className={`absolute w-[120px] xs:w-[140px] sm:w-[150px] md:w-40 rounded-full orbit-delay-${(index + 1) * 5} shadow-lg border-4 border-white/30`}
     style={{ zIndex: 5 }}
   />
 ))}

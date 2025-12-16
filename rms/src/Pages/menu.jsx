@@ -65,7 +65,6 @@ function MenuPage() {
             }}
           />
         </div>
-
         {/* CATEGORIES */}
         <div className="flex flex-wrap gap-3 justify-center mb-10">
           {categories.map(cat => (
