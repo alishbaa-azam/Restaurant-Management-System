@@ -268,7 +268,7 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../Context/cartContext";
+import { useCart } from "../context/cartContext";
 
 import {
   FaShoppingCart,
@@ -366,10 +366,10 @@ const { cartCount } = useCart();
           </Link>
 
           {/* Login Button */}
-          <button className="flex items-center gap-1 bg-linear-to-b from-[#f9a825] to-[#f57c00] px-3 py-2 lg:px-4 lg:py-2.5 rounded-2xl text-black font-semibold shadow-lg hover:scale-105 transition-all duration-200 text-xs lg:text-sm xl:text-base whitespace-nowrap">
+          <Link to="/admin/login" className="flex items-center gap-1 bg-linear-to-b from-[#f9a825] to-[#f57c00] px-3 py-2 lg:px-4 lg:py-2.5 rounded-2xl text-black font-semibold shadow-lg hover:scale-105 transition-all duration-200 text-xs lg:text-sm xl:text-base whitespace-nowrap">
             <FaKey className="text-sm lg:text-base" />
             <span className="hidden lg:inline">Login</span>
-          </button>
+          </Link>
         </div>
 
         {/* Mobile menu button and cart/login */}
@@ -462,13 +462,14 @@ const { cartCount } = useCart();
           </Link>
 
           {/* Mobile Login Button */}
-          <button
+          <Link
+            to="/admin/login"
             onClick={() => setIsMenuOpen(false)}
             className="flex items-center justify-center gap-2 bg-linear-to-b from-[#f9a825] to-[#f57c00] px-5 py-3 rounded-2xl text-black font-semibold shadow-lg hover:scale-105 transition-all duration-200 mt-4"
           >
             <FaKey className="text-lg" />
             <span className="text-lg">Login</span>
-          </button>
+          </Link>
         </div>
       </motion.div>
     </>

@@ -35,6 +35,11 @@ const menuSchema = new mongoose.Schema({
   image: {
     type: String,
     required: true
+  },
+
+  special: {
+    type: Boolean,
+    default: false
   }
 });
 

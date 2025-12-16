@@ -187,7 +187,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
-import { useCart } from "../Context/cartContext";
+import { useCart } from "../context/cartContext";
 
 const API_URL = "http://localhost:5000/api/menu";
 
