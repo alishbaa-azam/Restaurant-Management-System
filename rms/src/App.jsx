@@ -6,7 +6,7 @@ import "./App.css";
 // Pages
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
-import Cart from "./pages/Cart";
+import {Cart} from "./pages/Cart";
 import Product from "./pages/Product";
 import Specials from "./components/Specials";
 
