@@ -1,7 +1,7 @@
 import React from 'react'
-import CulinaryExpress from '../componenets/culinaryExpress'
-import StatsSection from '../componenets/StatsSection';
-import ChefSection from '../componenets/ChefSection';
+import CulinaryExpress from '../components/culinaryExpress'
+import StatsSection from '../components/StatsSection';
+import ChefSection from '../components/ChefSection';
 
 const About = () => {
   return (

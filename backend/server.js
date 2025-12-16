@@ -8,6 +8,8 @@ import User from './models/user.model.js';
 // Routes
 import bookingRoutes from "./routes/booking.routes.js";
 import chefRoutes from "./routes/chef.routes.js";
+import culinaryRoutes from "./routes/culinary.js";
+import statsRoutes from "./routes/stats.js";
 import menuRoutes from "./routes/menu.routes.js";
 import cartRoutes from "./routes/cartRoutes.js"; 
 import paymentRoutes from "./routes/payment.routes.js";
@@ -15,7 +17,7 @@ import authRoutes from "./routes/auth.routes.js";
 import contactRoutes from "./routes/contact.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
 import customerRoutes from "./routes/customer.routes.js";
-
+// import chefRoutes from "./routes/chef.routes.js";
 dotenv.config();
 // Add after dotenv.config()
 console.log('Environment check:');
@@ -77,7 +79,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/customer', customerRoutes);
-
+app.use('/api/culinary', culinaryRoutes);
+app.use('/api/stats', statsRoutes);
+app.use("/api/chefs", chefRoutes);
 // Error handlers (not found + general)
 import { notFound, errorHandler } from './middleware/errorHandler.js';
 

@@ -5,11 +5,11 @@ import "./App.css";
 // Pages
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
-import {Cart} from "./pages/Cart";
+import Cart from "./pages/Cart";
 import Specials from "./components/Specials";
 import Booking from "./components/TableBooking";
 import Contact from "./Pages/Contact";
-
+import About from "./Pages/about";
 // Admin pages
 import AdminLogin from "./Pages/Admin/Login";
 import AdminRegister from "./Pages/Admin/Register";
@@ -44,6 +44,7 @@ export default function App() {
             <Route path="/specials" element={<Specials />} />
             <Route path="/booking" element={<Booking />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
 
             {/* Admin routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
