@@ -303,7 +303,7 @@ const TableBookingPage = () => {
         {error && (
           <div className="mb-8 p-4 rounded-lg shadow-lg bg-red-800 border border-red-600">
             <div className="flex items-center">
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <Check className="h-6 w-6 text-white" />
               </div>
               <div className="ml-3">
@@ -318,7 +318,7 @@ const TableBookingPage = () => {
           <div className={`mb-8 p-4 rounded-lg shadow-lg ${availability.available ? 'bg-green-900 border border-green-700' : 'bg-red-900 border border-red-700'}`}>
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <div className="flex-shrink-0">
+                <div className="shrink-0">
                   {checkingAvailability ? (
                     <Loader2 className="h-5 w-5 animate-spin text-white" />
                   ) : availability.available ? (
@@ -370,19 +370,19 @@ const TableBookingPage = () => {
               
               <div className="space-y-4">
                 <div className="flex items-center p-3 rounded-lg transition-all duration-200 hover:shadow-md bg-[#2a1a12] border-l-4 border-amber-500">
-                  <MapPin className="h-5 w-5 mr-3 flex-shrink-0 text-amber-400" />
+                  <MapPin className="h-5 w-5 mr-3 shrink-0 text-amber-400" />
                   <span className="text-white">{restaurantInfo.address}</span>
                 </div>
                 <div className="flex items-center p-3 rounded-lg transition-all duration-200 hover:shadow-md bg-[#2a1a12] border-l-4 border-amber-500">
-                  <Phone className="h-5 w-5 mr-3 flex-shrink-0 text-amber-400" />
+                  <Phone className="h-5 w-5 mr-3 shrink-0 text-amber-400" />
                   <span className="text-white">{restaurantInfo.phone}</span>
                 </div>
                 <div className="flex items-center p-3 rounded-lg transition-all duration-200 hover:shadow-md bg-[#2a1a12] border-l-4 border-amber-500">
-                  <Mail className="h-5 w-5 mr-3 flex-shrink-0 text-amber-400" />
+                  <Mail className="h-5 w-5 mr-3 shrink-0 text-amber-400" />
                   <span className="text-white">{restaurantInfo.email}</span>
                 </div>
                 <div className="flex items-center p-3 rounded-lg transition-all duration-200 hover:shadow-md bg-[#2a1a12] border-l-4 border-amber-500">
-                  <Clock className="h-5 w-5 mr-3 flex-shrink-0 text-amber-400" />
+                  <Clock className="h-5 w-5 mr-3 shrink-0 text-amber-400" />
                   <span className="text-white">{restaurantInfo.hours}</span>
                 </div>
               </div>
@@ -412,7 +412,7 @@ const TableBookingPage = () => {
                         alt={img.alt}
                         className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bottom-0 left-0 right-0 p-4">
                           <p className="text-white font-medium">{img.alt}</p>
                         </div>
@@ -558,7 +558,7 @@ const TableBookingPage = () => {
                       onChange={handleChange}
                       required
                       min={currentDate}
-                      className="w-full px-4 py-3 pl-12 bg-transparent outline-none text-white [color-scheme:dark]"
+                      className="w-full px-4 py-3 pl-12 bg-transparent outline-none text-white scheme-dark"
                       disabled={loading}
                     />
                   </div>
@@ -652,7 +652,7 @@ const TableBookingPage = () => {
                   className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-xl focus:outline-none flex items-center justify-center
                     ${loading || (availability && !availability.available) 
                       ? 'opacity-50 cursor-not-allowed bg-gray-500' 
-                      : 'bg-gradient-to-r from-amber-500 to-orange-600 hover:shadow-2xl hover:shadow-amber-500/30'
+                      : 'bg-linear-to-r from-amber-500 to-orange-600 hover:shadow-2xl hover:shadow-amber-500/30'
                     }`}
                 >
                   {loading ? (
