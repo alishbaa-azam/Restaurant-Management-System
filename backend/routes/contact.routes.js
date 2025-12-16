@@ -1,9 +1,12 @@
-import express from 'express';
-import { submitContact } from '../controllers/contact.controller.js';
+import express from "express";
+import { createContact, getContacts } from "../controllers/contactController.js";
 
 const router = express.Router();
 
-// Public: Submit contact form (no auth required)
-router.post('/', submitContact);
+// Public route to submit query
+router.post("/", createContact);
+
+// Optional: Get all queries (admin)
+router.get("/", getContacts);
 
 export default router;

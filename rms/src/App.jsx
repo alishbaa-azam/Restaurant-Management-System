@@ -1,9 +1,11 @@
 import React from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import "./App.css";
-import Home from "./Pages/Home";
-import Menu from "./Pages/menu";
-import Cart from "./Pages/Cart";
+
+// Pages
+import Home from "./pages/Home";
+import Menu from "./pages/Menu";
+import {Cart} from "./pages/Cart";
 import Specials from "./components/Specials";
 import Booking from "./components/TableBooking";
 import Contact from "./Pages/Contact";

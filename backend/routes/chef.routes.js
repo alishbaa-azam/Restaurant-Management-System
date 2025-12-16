@@ -5,14 +5,22 @@ import {
   getChefById,
   updateChef,
   deleteChef,
-} from "../controllers/chefController.js";
+} from "../controllers/chef.Controller.js";
+import upload from "../middleware/upload.js";
 
 const router = express.Router();
 
-router.post("/create", createChef);
+// CREATE
+router.post("/", upload.single("image"), createChef);
+
+// READ
 router.get("/", getChefs);
 router.get("/:id", getChefById);
-router.put("/:id", updateChef);
+
+// UPDATE
+router.put("/:id", upload.single("image"), updateChef);
+
+// DELETE
 router.delete("/:id", deleteChef);
 
 export default router;
