@@ -20,3 +20,33 @@
     transform: rotate(360deg) translateX(150px) rotate(360deg);
   }
 }
+
+
+/* In your global CSS file */
+:root {
+  /* Primary Colors */
+  --color-primary-dark: #2a1a12;
+  --color-primary-medium: #5a2d0c;
+  --color-primary-light: #7a441a;
+  
+  /* Accent Colors */
+  --color-accent-yellow: #f9a825;
+  --color-accent-orange: #f57c00;
+  
+  /* Text Colors */
+  --color-text-yellow: #fef3c7;
+  --color-text-yellow-dark: #fbbf24;
+}
+
+/* You can also define utility classes */
+.bg-primary-dark {
+  background-color: var(--color-primary-dark);
+}
+
+.border-primary-medium {
+  border-color: var(--color-primary-medium);
+}
+
+.text-yellow-light {
+  color: var(--color-text-yellow);
+}
